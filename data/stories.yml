@@ -1,0 +1,302 @@
+version: "3.1"
+
+stories: 
+- story: Most_Possible_Path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_coronavirus
+  - action: utter_corona
+  - intent: do_i_have_corona
+  - action: utter_ask_fever_yes_or_no
+  - intent: fever_yes_or_no
+    entities:
+      - fever: "yes"
+  - action: utter_ask_cough_yes_or_no
+  - intent: cough_yes_or_no
+    entities:
+      - cough: "yes"
+  - action: utter_ask_tiredness_yes_or_no
+  - intent: tiredness_yes_or_no
+    entities:
+      - tiredness: "yes"
+  - action: utter_ask_covid_contact
+  - intent: covid_contact
+    entities:
+      - contact: "yes"
+  - action: utter_ask_travel_history
+  - intent: travel_yes_or_no
+    entities:
+      - travel: "yes"
+  - action: action_corona_predict
+  - intent: corona_in_my_area
+  - action: utter_type_location 
+  - intent: corona_location_tracker
+    entities:
+      - location: "yes"
+  - action: action_corona_location_tracker  
+  - intent: search_provider
+    entities:
+    - facility_type: "test center"
+  - action: action_facility_search
+  - intent: search_provider
+    entities:
+    - facility_type: "hospital"
+  - action: action_facility_search
+  - intent: coronavirus_protection_measures
+  - action: utter_coronavirus_protection_measures
+  - intent: recent_stats
+  - action: action_recent_stats
+
+- story: Simple_Corona_Predict
+  steps:
+  - intent: do_i_have_corona
+  - action: utter_ask_fever_yes_or_no
+  - intent: fever_yes_or_no
+  - action: utter_ask_cough_yes_or_no
+  - intent: cough_yes_or_no
+  - action: utter_ask_tiredness_yes_or_no
+  - intent: tiredness_yes_or_no
+  - action: utter_ask_covid_contact
+  - intent: covid_contact
+  - action: utter_ask_travel_history
+  - intent: travel_yes_or_no
+  - action: action_corona_predict
+
+- story: Corona_Predict
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: do_i_have_corona
+  - action: utter_ask_fever_yes_or_no
+  - intent: fever_yes_or_no
+  - action: utter_ask_cough_yes_or_no
+  - intent: cough_yes_or_no
+  - action: utter_ask_tiredness_yes_or_no
+  - intent: tiredness_yes_or_no
+  - action: utter_ask_covid_contact
+  - intent: covid_contact
+  - action: utter_ask_travel_history
+  - intent: travel_yes_or_no
+  - action: action_corona_predict
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about_coronavirus
+  - action: utter_corona
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+
+- story: no survey
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: covid19
+  steps:
+  - intent: about_covid-19 
+  - action: utter_covid19
+
+- story: symptoms
+  steps:
+  - intent: about_coronavirus_symptoms
+  - action: utter_symptoms
+
+- story: coronavirus_spread_air
+  steps:
+  - intent: coronavirus_spread_air
+  - action: utter_coronavirus_spread_air
+
+- story: coronavirus_spread_feces
+  steps:
+  - intent: coronavirus_spread_feces
+  - action: utter_coronavirus_spread_feces
+
+- story: coronavirus_spread_no_symptoms
+  steps:
+  - intent: coronavirus_spread_no_symptoms
+  - action: utter_coronavirus_spread_no_symptoms
+
+- story: coronavirus_spread_animal_source
+  steps:
+  - intent: coronavirus_spread_animal_source
+  - action: utter_coronavirus_spread_animal_source
+
+- story: coronavirus_protection_measures
+  steps:
+  - intent: coronavirus_protection_measures
+  - action: utter_coronavirus_protection_measures
+
+- story: coronavirus_worry_covid19
+  steps:
+  - intent: coronavirus_worry_covid19
+  - action: utter_coronavirus_worry_covid19
+
+- story: coronavirus_about_risk
+  steps:
+  - intent: coronavirus_about_risk
+  - action: utter_coronavirus_about_risk
+
+- story: coronavirus_about_antibiotics
+  steps:
+  - intent: coronavirus_about_antibiotics
+  - action: utter_coronavirus_about_antibiotics
+
+- story: coronavirus_about_vaccine
+  steps:
+  - intent: coronavirus_about_vaccine
+  - action: utter_coronavirus_about_vaccine
+
+- story: coronavirus_about_mask
+  steps:
+  - intent: coronavirus_about_mask
+  - action: utter_coronavirus_about_mask
+
+- story: coronavirus_about_incubation
+  steps:
+  - intent: coronavirus_about_incubation
+  - action: utter_coronavirus_about_incubation
+
+- story: coronavirus_about_avoid
+  steps:
+  - intent: coronavirus_about_avoid
+  - action: utter_coronavirus_about_avoid
+  
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: bot_asking_my_location
+  steps:
+  - intent: corona_in_my_area
+  - action: utter_type_location
+
+- story: Vaccine_Updates
+  steps:
+  - intent: vaccine_updates  
+  - action: utter_vaccine_updates
+
+- story: corona_recent_stats_path
+  steps:
+  - intent: recent_stats
+  - action: action_recent_stats
+
+- story: corona tracker path 
+  steps:
+  - intent: corona_location_tracker
+  - action: action_corona_location_tracker
+
+- story: facility type test center
+  steps:
+  - intent: search_provider
+    entities: 
+    - facility_type: "test center"
+  - action: action_facility_search
+
+- story: facility type hospital
+  steps:
+  - intent: search_provider
+    entities: 
+    - facility_type: "hospital"  
+  - action: action_facility_search
+
+- story: facilty type Shelter
+  steps:
+  - intent: search_provider
+    entities: 
+    - facility_type: "shelter homes"  
+  - action: action_facility_search
+
+- story: facilty type free food
+  steps:
+  - intent: search_provider
+    entities: 
+    - facility_type: "free food" 
+  - action: action_facility_search
+
+- story: coronavirus_about_sanitizer
+  steps:
+  - intent: coronavirus_about_sanitizer
+  - action: utter_coronavirus_about_sanitizer
+
+
+- story: coronavirus_precautive_vitamins
+  steps:
+  - intent: coronavirus_precautive_vitamins
+  - action: utter_coronavirus_precautive_vitamins
+
+- story: spread_coronavirus
+  steps:
+  - intent: spread_coronavirus
+  - action: utter_spread_coronavirus
+
+- story: coronavirus_children
+  steps:
+  - intent: coronavirus_children
+  - action: utter_coronavirus_children
+
+- story: coronavirus_old_people
+  steps:
+  - intent: coronavirus_old_people
+  - action: utter_coronavirus_old_people
+
+- story: coronavirus_old_adults_young
+  steps:
+  - intent: coronavirus_old_adults_young
+  - action: utter_coronavirus_old_adults_young
+
+- story: prepare_for_outbreak
+  steps:
+  - intent: prepare_for_outbreak
+  - action: utter_prepare_for_outbreak
+
+- story: coronavirus_test
+  steps:
+  - intent: coronavirus_test
+  - action: utter_coronavirus_test
+
+- story: contact_tracing_corona_period
+  steps:
+  - intent: contact_tracing_corona_period
+  - action: utter_contact_tracing_corona_period
+
+- story: funerals_corona
+  steps:
+  - intent: funerals_corona
+  - action: utter_funerals_corona
+
+- story: coronavirus_cleaning_disinfection
+  steps:
+  - intent: coronavirus_cleaning_disinfection
+  - action: utter_coronavirus_cleaning_disinfection
+
+- story: community_mitigation_corona
+  steps:
+  - intent: community_mitigation_corona
+  - action: utter_community_mitigation_corona
+
+- story: corona_from_food_and_water
+  steps:
+  - intent: corona_from_food_and_water
+  - action: utter_corona_from_food_and_water
+
+- story: treat_corona_home
+  steps:
+  - intent: treat_corona_home
+  - action: utter_treat_corona_home
